@@ -1,0 +1,45 @@
+
+:root {
+    --bg: #F0EAD2;
+    --light: #ADC178;
+    --light2: #DDE5B6;
+    --accent1: #A98467;
+    --accent2: #6C584C; 
+    --shadow: #3a302a;
+}
+
+
+body {
+    background-color: var(--bg);
+}
+
+
+.cstm
+{
+    background-color: var(--light) !important; 
+}
+
+.cstm-light-text {
+    background-color: var(--accent2) !important; 
+    color: var(--light2) !important; 
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--light2) !important; 
+}
+
+.cstm-btn {
+    color:var(--dark) !important; 
+    background-color: var(--light2) !important; 
+    border-color: var(--light2);
+}
+
+.cstm-btn:hover {
+    background: var(--accent1) !important; 
+    color: var(--light2) !important; 
+    border-color: var(--accent1);
+}
+
+.cstm-shadow {
+    box-shadow: 10px 10px 5px var(--shadow);
+}
