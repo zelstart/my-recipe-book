@@ -22,7 +22,7 @@
 }
 
 
-/* red/pink palette */
+/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> */ 
 :root {
     --bg: #f3f5e9;
     --dark: #c73541;
