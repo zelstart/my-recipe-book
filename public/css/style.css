@@ -1,13 +1,35 @@
-
+/* green/brown palette
 :root {
     --bg: #F0EAD2;
+    --dark: #6C7E3A;
     --light: #ADC178;
     --light2: #DDE5B6;
     --accent1: #A98467;
     --accent2: #6C584C; 
-    --shadow: #3a302a;
-}
+    --shadow: #302722;
+} */
 
+/* blue palette 
+:root {
+    --bg: #d6e3ee;
+    --dark: #1c416f;
+    --light: #eef4ed;
+    --light2: #3e5c76;
+    --accent1: #134074;
+    --accent2: #13315c; 
+    --shadow: #061323;
+}
+*/
+/* red/pink palette */
+:root {
+    --bg: #f3f5e9;
+    --dark: #d64550;
+    --light: #eef4ed;
+    --light2: #ea9e8d;
+    --accent1: #daefb3;
+    --accent2: #eef4d4; 
+    --shadow: #3c0919;
+}
 
 body {
     background-color: var(--bg);
@@ -20,7 +42,7 @@ body {
 }
 
 .cstm-light-text {
-    background-color: var(--accent2) !important; 
+    background-color: var(--dark) !important; 
     color: var(--light2) !important; 
 }
 .navbar-custom .navbar-brand,
