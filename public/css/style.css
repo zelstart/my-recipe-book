@@ -1,3 +1,17 @@
+/* NOTE:: i know these look awful right now, once you let me know what color schemes you want
+i can make them a little less one colory. i just wanted to give a general idea of the colors */
+/* orange & cream 
+:root {
+    --bg: #fff6e0;
+    --dark: #ef9c49;
+    --light: #f3d9a0;
+    --light2: #fef8e7;
+    --accent1: #f4dfae;
+    --accent2: #fef8dc; 
+    --shadow: #8d5630;
+}
+
+
 /* green/brown palette 
 :root {
     --bg: #F0EAD2;
@@ -22,7 +36,7 @@
 }
 
 
-/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> */ 
+/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> */
 :root {
     --bg: #f3f5e9;
     --dark: #c73541;
@@ -32,7 +46,7 @@
     --accent2: #eef4d4; 
     --shadow: #682e40;
 }
-*/
+
 
 body {
     background-color: var(--bg);
