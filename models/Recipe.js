@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 
 class Recipe extends Model {}
 
-
 // as a stretch goal, might want to implement a tag feature
 Recipe.init(
     {
