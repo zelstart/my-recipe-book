@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const format = require('date-fns/format');
 const sequelize = require('../config/connection');
 
 class Recipe extends Model {}
@@ -30,16 +29,17 @@ Recipe.init(
                 key: 'id'
             }
         },
+        tag_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Tag',
+                key: 'id'
+            }
+        },
         created_at: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
         },
-        formatted_date: {
-            type: DataTypes.VIRTUAL,
-            get() {
-                return format(this.created_at, 'dd/MM/yyyy - HH:mm');
-            }
-        }
     },
     {
         sequelize,
