@@ -1,0 +1,86 @@
+/* NOTE:: i know these look awful right now, once you let me know what color schemes you want
+i can make them a little less one-colory. i just wanted to give a general idea of the colors
+i was thinking. to see how they look go to the views folder and open htmlvisual.html in your browswer */
+
+/* orange & cream 
+:root {
+    --bg: #fff6e0;
+    --dark: #ef9c49;
+    --light: #f3d9a0;
+    --light2: #fef8e7;
+    --accent1: #f4dfae;
+    --accent2: #fef8dc; 
+    --shadow: #8d5630;
+}
+
+
+/* green/brown palette 
+:root {
+    --bg: #F0EAD2;
+    --dark: #6C7E3A;
+    --light: #ADC178;
+    --light2: #DDE5B6;
+    --accent1: #A98467;
+    --accent2: #6C584C; 
+    --shadow: #302722;
+} 
+
+
+/* blue palette 
+ :root {
+    --bg: #d6e3ee;
+    --dark: #1c416f;
+    --light: #3e5c76;
+    --light2: #eef4ed;
+    --accent1: #134074;
+    --accent2: #13315c; 
+    --shadow: #061323;
+}
+
+
+/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> */
+:root {
+    --bg: #f3f5e9;
+    --dark: #c73541;
+    --light: #ea9e8d;
+    --light2: #eef4ed;
+    --accent1: #daefb3;
+    --accent2: #eef4d4; 
+    --shadow: #682e40;
+}
+
+
+body {
+    background-color: var(--bg);
+}
+
+
+.cstm
+{
+    background-color: var(--light) !important; 
+}
+
+.cstm-light-text {
+    background-color: var(--dark) !important; 
+    color: var(--light2) !important; 
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--light) !important; 
+}
+
+.cstm-btn {
+    color:var(--dark) !important; 
+    background-color: var(--light2) !important; 
+    border-color: var(--light2);
+}
+
+.cstm-btn:hover {
+    background: var(--accent1) !important; 
+    color: var(--light2) !important; 
+    border-color: var(--accent1);
+}
+
+.cstm-shadow {
+    box-shadow: 7px 7px 5px var(--shadow);
+}
