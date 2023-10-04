@@ -26,7 +26,7 @@ i was thinking. to see how they look go to the views folder and open htmlvisual.
 } 
 
 
-/* blue palette 
+/* blue palette */
  :root {
     --bg: #d6e3ee;
     --dark: #1c416f;
@@ -34,11 +34,11 @@ i was thinking. to see how they look go to the views folder and open htmlvisual.
     --light2: #eef4ed;
     --accent1: #134074;
     --accent2: #13315c; 
-    --shadow: #061323;
+    --shadow: #1e3047;
 }
 
 
-/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> */
+/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> 
 :root {
     --bg: #f3f5e9;
     --dark: #c73541;
@@ -48,7 +48,7 @@ i was thinking. to see how they look go to the views folder and open htmlvisual.
     --accent2: #eef4d4; 
     --shadow: #682e40;
 }
-
+*/
 
 body {
     background-color: var(--bg);
