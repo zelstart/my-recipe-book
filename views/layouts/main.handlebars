@@ -21,32 +21,32 @@
 <body>
 
     <!-- Nav -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-5 px-5 cstm">
-        <div class="container-fluid align-items-end">
-            <a class="navbar-brand" href="#">
-                <h1>Project #2</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    {{#if loggedIn}}
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/myrecipes">My Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/browse">Browse</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/newrecipe">+New Recipe</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                    {{else}}
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-5 px-5 cstm-light-text bottom-border">
+    <div class="container-fluid align-items-end">
+        <a class="navbar-brand" href="#">
+            <h1>Project #2</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {{#if loggedIn}}
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/dashboard/{{userId}}">My Recipes</a></li>
+                <li class="nav-item"><a class="nav-link" href="/browse">Browse</a></li>
+                <li class="nav-item"><a class="nav-link" href="/newrecipe">+New Recipe</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                {{else}}
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
-                    {{/if}}
-                </ul>
-            </div>
+                    <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
+                {{/if}}
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Main ((Dynamic)) -->
     <main class="container container-fluid mx-5">

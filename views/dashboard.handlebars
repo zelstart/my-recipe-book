@@ -1,0 +1,66 @@
+<!-- User Information -->
+<div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-2">
+            <h2>User Information</h2>
+        </div>
+    </div>
+</div>
+<div class="container lg-card-body rounded-bottom p-5 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <p><span class="bold">Username:</span> {{username}}</p>
+           <p><span class="bold">Email:</span> {{email}}</p> 
+             <p><span class="bold">Joined:</span> {{joinDate}}</p>
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+</div>
+
+<!-- User Recipes -->
+<div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-2">
+            <h2>{{{ username }}}'s Recipes</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container lg-card-body rounded-bottom p-5 mb-2">
+    <div class="row justify-content-center">
+        {{#each userRecipes}} <!-- query to just return this user's recipes -->
+        <div class="col-sm-3 col-6 mb-4">
+            <div class="card position-relative">
+                <img src="{{recipe.image}}" alt="{{recipe.title}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<!-- User Comments -->
+<div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-2">
+            <h2>{{{ username }}}'s' Comments</h2>
+        </div>
+    </div>
+</div>
+<div class="container lg-card-body rounded-bottom p-5 mb-4">
+    <div class="row justify-content-center">
+        {{#each comments}}
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{comment.Recipe.title}}</h5>
+                    <p class="card-text">{{comment.body}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
