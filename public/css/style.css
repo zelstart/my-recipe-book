@@ -102,6 +102,16 @@ h5 {
     font-style: italic;
 }
 
+.bottom-box-2 {
+    bottom: 20px;
+    background-color: white;
+    padding: 0px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--shadow);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+}
+
 .form-label {
     color: var(--light2);
 }

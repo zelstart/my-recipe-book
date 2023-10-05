@@ -1,0 +1,33 @@
+<div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-2">
+            <h2 id="recipe-name">{{recipeName}}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container lg-card-body rounded-bottom p-5 mb-4">
+    <div class="row justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-sm-3 col-6 position-relative">
+                <div class="position-absolute bottom-box-2">
+                    {{recipe.User.username}}
+                </div>
+                <img src="{{recipe.image}}" alt="Dish 1" id="imageUrl" class="card-img-top">
+            </div>
+            <div class="col-sm-9 col-6">
+                <h4>Ingredients:</h4>
+                <ul>
+                    {{#each ingredients}} <!-- gonna need some way to potentially break at ',' -->
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="row justify-content-left">
+                <div class="col-12 mt-4">
+                    <p id="instructions">{{instructions}}</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
