@@ -11,13 +11,23 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    comment_title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    comment_body: {
+    body: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+          model: 'User',
+          key: 'id'
+      }
+    },
+    recipe_id: {
+      type: DataTypes.INTEGER,
+      references: {
+          model: 'Recipe',
+          key: 'id'
+      }
     },
     created_at: {
       type: DataTypes.DATE,
@@ -27,10 +37,14 @@ Comment.init(
   {
     sequelize,
     timestamps: false,
-    freezeTableName: true,
+    freezeTableName: false,
     underscored: true,
-    modelName: 'comment',
-    tableName: 'Comments', 
+    modelName: 'Comment',
+    hooks: {
+      beforeCreate: async (comment) => {
+          comment.created_at = new Date();
+      }
+    }
   }
 );
 
