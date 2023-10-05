@@ -1,9 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
-const format = require('date-fns/format');
 const sequelize = require('../config/connection');
 
 class Recipe extends Model {}
-
 
 // as a stretch goal, might want to implement a tag feature
 Recipe.init(
@@ -18,10 +16,14 @@ Recipe.init(
         type: DataTypes.STRING(100),
         allowNull: false,
         },
-        content: {
+        body: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
+        image: {
+            type: DataTypes.TEXT, //url for now. may want to look into multer npm package for file uploads?
+            allowNull: false,
+          },
         // might need to create a user for Tasty API recipes so this doesn't give us errors
         user_id: {
             type: DataTypes.INTEGER,
@@ -30,24 +32,24 @@ Recipe.init(
                 key: 'id'
             }
         },
+        // tag_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'Tag',
+        //         key: 'id'
+        //     }
+        // },
         created_at: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
         },
-        formatted_date: {
-            type: DataTypes.VIRTUAL,
-            get() {
-                return format(this.created_at, 'dd/MM/yyyy - HH:mm');
-            }
-        }
     },
     {
         sequelize,
         timestamps: false,
-        freezeTableName: true,
+        freezeTableName: false,
         underscored: true,
-        modelName: 'recipe',
-        tableName: 'Recipes',
+        modelName: 'Recipe',
         hooks: {
             beforeCreate: async (recipe) => {
                 recipe.created_at = new Date();
