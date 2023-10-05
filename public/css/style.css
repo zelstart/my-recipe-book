@@ -1,59 +1,58 @@
-/* NOTE:: i know these look awful right now, once you let me know what color schemes you want
-i can make them a little less one-colory. i just wanted to give a general idea of the colors
-i was thinking. to see how they look go to the views folder and open htmlvisual.html in your browswer */
-
-/* orange & cream 
-:root {
-    --bg: #fff6e0;
-    --dark: #ef9c49;
-    --light: #f3d9a0;
-    --light2: #fef8e7;
-    --accent1: #f4dfae;
-    --accent2: #fef8dc; 
-    --shadow: #8d5630;
-}
-
-
-/* green/brown palette 
-:root {
-    --bg: #F0EAD2;
-    --dark: #6C7E3A;
-    --light: #ADC178;
-    --light2: #DDE5B6;
-    --accent1: #A98467;
-    --accent2: #6C584C; 
-    --shadow: #302722;
-} 
-
-
-/* blue palette */
  :root {
-    --bg: #d6e3ee;
+    --bg: #e9ecf0;
     --dark: #1c416f;
-    --light: #3e5c76;
+    --light: #81AADE;
     --light2: #eef4ed;
     --accent1: #134074;
     --accent2: #13315c; 
     --shadow: #1e3047;
+    --cardbody: #365780;
 }
 
-
-/* red/pink palette to switch between palettes, move this guy where appropriate so only one :root is working --> 
-:root {
-    --bg: #f3f5e9;
-    --dark: #c73541;
-    --light: #ea9e8d;
-    --light2: #eef4ed;
-    --accent1: #daefb3;
-    --accent2: #eef4d4; 
-    --shadow: #682e40;
-}
-*/
 
 body {
     background-color: var(--bg);
 }
+p {
+    color: var(--light2);
+}
 
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 700;
+    text-shadow: var(--shadow) 2px 2px 5px;
+    letter-spacing: .030em;
+    font-size: 4rem;
+}
+
+h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: var(--shadow) 2px 2px 5px;
+    font-weight: 700 ;
+    padding: 15px 0px 0px 0px;
+}
+
+h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--light2)
+}
+
+h5 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--shadow)
+}
+
+.lg-card-body {
+    background: var(--cardbody);
+}
+
+.card {
+    box-shadow: 7px 7px 5px var(--shadow);
+}
+
+.card-text {
+    color: var(--shadow);
+}
 
 .cstm
 {
@@ -66,7 +65,7 @@ body {
 }
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
-    color: var(--light) !important; 
+    color: white !important; 
 }
 
 .cstm-btn {
@@ -84,3 +83,34 @@ body {
 .cstm-shadow {
     box-shadow: 7px 7px 5px var(--shadow);
 }
+
+.bottom-border {
+    border-bottom: 8px solid var(--light);
+}
+
+.card-border {
+    border-bottom: 6px solid var(--light);
+}
+
+.bottom-box {
+    bottom: 70px;
+    background-color: white;
+    padding: 0px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--shadow);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+}
+
+.form-label {
+    color: var(--light2);
+}
+
+.bold {
+    font-weight: 700;
+}
+
+li {
+    color: var(--light2)
+}
+
