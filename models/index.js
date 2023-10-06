@@ -1,40 +1,18 @@
 const User = require('./User');
 const Recipe = require('./Recipe');
-// const Comment = require('./Comment');
-// const Tag = require('./Tag');
-// const RecipeTag = require('./RecipeTag');
+const Tag = require('./Tag');
+const Comment = require('./Comment');
 
+User.hasMany(Comment, { foreignKey: 'user_id' });
+User.hasMany(Recipe, { foreignKey: 'user_id' });
 
-User.hasMany(Recipe, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-})
+Recipe.belongsToMany(Tag, { through: 'recipe_tags' });
+Recipe.hasMany(Comment, { foreignKey: 'recipe_id' });
+Recipe.belongsTo(User, {foreignKey: 'user_id'})
 
-// User.hasMany(Comment, {
-//     foreignKey: 'user_id',
-//     onDelete: 'CASCADE',
-// })
+Tag.belongsToMany(Recipe, { through: 'recipe_tags' });
 
-Recipe.belongsTo(User, {
-    foreign_key: 'user_id',
-})
+Comment.belongsTo(User, { foreignKey: 'user_id' });
+Comment.belongsTo(Recipe, { foreignKey: 'recipe_id' });
 
-// Recipe.hasMany(Tag, {
-//     foreign_key: 'tag_id',
-// })
-
-// Recipe.belongsToMany(Tag, {
-//     through: 'RecipeTag',
-//     foreignKey: 'recipe_id',
-//     otherKey: 'tag_id',
-//   });
-
-// Tag.belongsToMany(Recipe, {
-//     through: 'RecipeTag',
-//     foreignKey: 'tag_id',
-//     otherKey: 'recipe_id', 
-// })
-
-module.exports = { User, Recipe }
-
-//Tag, Comment, RecipeTag
+module.exports = { User, Recipe, Tag, Comment };

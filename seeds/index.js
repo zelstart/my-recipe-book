@@ -1,18 +1,18 @@
-const sequelize = require('../config/connection');
-const userSeedData = require('./userSeedData');
-const recipeSeedData = require('./recipeSeedData');
-// const tagSeedData = require('./tagSeedData');
-// const commentSeedData = require('./commentSeedData');
+const seedUsers = require('./userSeedData');
+const seedComments = require('./commentSeedData');
+const seedRecipes = require('./recipeSeedData');
+const seedTags = require('./tagSeedData');
 
-const seedDatabase = async () => {
+const sequelize = require('../config/connection');
+
+const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await userSeedData();
-//   await tagSeedData();
-  await recipeSeedData();
-//   await commentSeedData();
-
+  await seedUsers();
+  await seedRecipes();
+  await seedComments();
+  await seedTags();
   process.exit(0);
 };
 
-seedDatabase();
+seedAll();
