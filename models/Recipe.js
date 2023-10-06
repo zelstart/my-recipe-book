@@ -3,63 +3,41 @@ const sequelize = require('../config/connection');
 
 class Recipe extends Model {}
 
-// as a stretch goal, might want to implement a tag feature
 Recipe.init(
-    {
-        id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-        },
-        title: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        },
-        ingredients: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        instructions: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        image: {
-            type: DataTypes.TEXT, //url for now. may want to look into multer npm package for file uploads?
-            allowNull: false,
-          },
-        // might need to create a user for Tasty API recipes so this doesn't give us errors
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'User',
-                key: 'id'
-            }
-        },
-        // tag_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'Tag',
-        //         key: 'id'
-        //     }
-        // },
-        created_at: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: false,
-        underscored: true,
-        modelName: 'Recipe',
-        hooks: {
-            beforeCreate: async (recipe) => {
-                recipe.created_at = new Date();
-            }
-        }
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    ingredients: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      get() {
+        return this.getDataValue('ingredients').split(',');
+      }
+    },
+    instructions: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    image: {
+        type: DataTypes.TEXT,
+        allowNull: false
     }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: false,
+    underscored: true,
+    modelName: 'recipe'
+  }
 );
 
 module.exports = Recipe;
