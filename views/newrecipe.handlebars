@@ -10,7 +10,7 @@
             <div class="container lg-card-body rounded-bottom p-5 mb-4">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form>
+                        <form class="create-recipe">
                             <div class="mb-3">
                                 <label for="recipeName" class="form-label bold">Recipe Name:</label>
                                 <input type="text" class="form-control" id="recipeName" required>
@@ -20,14 +20,14 @@
                                 <textarea class="form-control" id="ingredients" rows="5" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="directions" class="form-label bold">Instructions:</label>
+                                <label for="instructions" class="form-label bold">Instructions:</label>
                                 <textarea class="form-control" id="instructions" rows="5" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="imageUrl" class="form-label bold">Image URL:</label>
-                                <input type="text" class="form-control" id="image" required>
+                                <label for="image" class="form-label bold">Image URL:</label>
+                                <input type="file" name="avatar" id="image" required/>
                             </div>
-                                <!--<div class="mb-3">
+                            <!--<div class="mb-3">
                                 <label for="imageUrl" class="form-label bold">Tag:s</label>
                                 <input type="text" class="form-control" id="tags" required>
                             </div> -->
