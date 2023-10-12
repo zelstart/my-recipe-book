@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const multer  = require('multer');
-const { Recipe } = require('../../models');
+const { User, Recipe, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+
 
 
 
@@ -19,7 +21,25 @@ const upload = multer({ storage: storage });
 
 var imageName;
 
-router.post('/', upload.single('recipe-image'), async (req, res) => {
+
+router.get('/', async (req, res) => {
+    try {
+        const recipes = await Recipe.findAll({
+            include: [{
+                model: Comment,
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }]
+        });
+        res.json(recipes);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+ });
+
+router.post('/', withAuth, upload.single('recipe-image'), async (req, res) => {
     try{
 
         imageName = "./assets/images/" + imageName;
@@ -56,5 +76,6 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 module.exports = router;
