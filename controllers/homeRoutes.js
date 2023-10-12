@@ -30,6 +30,7 @@ router.get('/', async (req, res) => {
     const userRecipesHome = userRecipesHomeData.map((recipe) => recipe.get({ plain: true }));
 
     const randomRecipesData = await Recipe.findAll({
+      include: [{ model: User, attributes: ['username'] }],
       where: {
           user_id: {
               [Op.ne]: 1, 
@@ -50,6 +51,10 @@ router.get('/', async (req, res) => {
       randomRecipes,
       logged_in: req.session.logged_in,
     });
+
+    console.log('recipes:', recipes);
+
+
   } catch (err) {
     console.error(err)
     res.status(500).json(err);
