@@ -5,7 +5,7 @@ const { sequelize } = require('../config/connection');
 const { Op } = require('sequelize');
 
 // homepage populated with recipe images
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const recipeData = await Recipe.findAll({
       include: [{
@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
     const userRecipesHomeData = await Recipe.findAll({
       where: {
         // for testing purposes, i had to just set the user_id here since i can't get myself to be logged in
-        user_id: 1,
-        // user_id: req.session.user_id
+        // user_id: 1,
+        user_id: req.session.user_id
       },
       // can't get the random to work rn
       // order: [sequelize.random()],
@@ -33,9 +33,9 @@ router.get('/', async (req, res) => {
       include: [{ model: User, attributes: ['username'] }],
       where: {
           user_id: {
-              [Op.ne]: 1, 
+              // [Op.ne]: 1, 
               // exclude this user's recipes here
-              // [Op.ne]: req.session.user_id
+              [Op.ne]: req.session.user_id
           },
       },
       // order: [sequelize.random()],
