@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Recipe, User } = require('../models');
 const withAuth = require('../utils/auth');
 const { sequelize } = require('../config/connection');
+const { Op } = require('sequelize');
 
 // homepage populated with recipe images
 router.get('/', async (req, res) => {
@@ -29,9 +30,17 @@ router.get('/', async (req, res) => {
     const userRecipesHome = userRecipesHomeData.map((recipe) => recipe.get({ plain: true }));
 
     const randomRecipesData = await Recipe.findAll({
+      where: {
+          user_id: {
+              [Op.ne]: 1, 
+              // exclude this user's recipes here
+              // [Op.ne]: req.session.user_id
+          },
+      },
       // order: [sequelize.random()],
-      limit: 6
-    });
+      limit: 6 
+  });
+  
 
     const randomRecipes = randomRecipesData.map((recipe) => recipe.get({ plain: true }));
 
