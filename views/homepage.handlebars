@@ -1,33 +1,59 @@
 
-    <!-- Favorites -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12">
+
+    <!-- Your Favorites -->
+    <div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+        <div class="row justify-content-center">
+            <div class="col-12 mb-2">
                 <h2>Your Favorites</h2>
             </div>
-            {{#each favorites}}
-                <div class="col-2 mb-4">
-                    <img src="{{this.image}}" alt="{{this.dishName}}" class="img-fluid">
-                    <p>{{this.dishName}}</p>
+        </div>
+    </div>
+
+    <div class="container lg-card-body rounded-bottom p-5 mb-4">
+        <div class="row justify-content-center">
+            {{#each userRecipesHome}} <!-- query to get user's recipes & limit to 6 -->
+                <!-- Dish -->
+                <div class="col-sm-2 col-6 mb-4">
+                    <div class="card position-relative">
+                        <img src="{{this.imageurl}}" alt="{{this.title}}" class="card-img-top">
+                        <div class="position-absolute bottom-box">
+                            recipe author
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                        </div>
+                    </div>
                 </div>
             {{/each}}
         </div>
     </div>
 
-    <!-- Suggestions -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12">
+    <!-- You might like... -->
+    <div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+        <div class="row justify-content-center">
+            <div class="col-12 mb-2">
                 <h2>You might like...</h2>
             </div>
-            {{#each suggestions}}
-                <div class="col-2 mb-4">
-                    <img src="{{this.image}}" alt="{{this.dishName}}" class="img-fluid">
-                    <p>{{this.dishName}}</p>
+        </div>
+    </div>
+
+    <div class="container lg-card-body rounded-bottom p-5 mb-2">
+        <div class="row justify-content-center">
+            {{#each randomRecipes}} <!-- query to get 6 random recipes excluding the current user -->
+                <!-- Dish -->
+                <div class="col-sm-2 col-6 mb-4">
+                    <div class="card position-relative">
+                        <img src="{{this.imageurl}}" alt="{{this.title}}" class="card-img-top">
+                        <div class="position-absolute bottom-box">
+                            recipe author
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                        </div>
+                    </div>
                 </div>
             {{/each}}
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-cE2EE1NLeV1gt1G8v+uA4lD0gGk4zVD1tdJzK3Rt7bk1pR4l5re86ZRQ9DoVJvpt" crossorigin="anonymous"></script>
 
