@@ -37,10 +37,10 @@
                 <li class="nav-item"><a class="nav-link" href="/dashboard/{{userId}}">My Recipes</a></li>
                 <li class="nav-item"><a class="nav-link" href="/browse">Browse</a></li>
                 <li class="nav-item"><a class="nav-link" href="/newrecipe">+New Recipe</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login" id="logout">Logout</a></li>
                 {{else}}
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
                 {{/if}}
             </ul>
         </div>
@@ -51,6 +51,10 @@
     <!-- Main ((Dynamic)) -->
     <main class="container container-fluid mx-5">
         {{{ body }}}
+
+        {{#if logged_in}}
+        <script src="/js/logout.js"></script>
+        {{/if}}
     </main>
 
 </body>
