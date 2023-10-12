@@ -20,7 +20,7 @@ const newRecipeFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/profile');
     } else {
       alert('Failed to create recipe');
     }

@@ -9,7 +9,7 @@ const withAuth = require('../../utils/auth');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './assets/images');
+        cb(null, './public/assets');
     },
     filename: function (req, file, cb) {
         imageName = Date.now() + '-' + file.originalname;
@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 router.post('/', withAuth, upload.single('recipe-image'), async (req, res) => {
     try{
 
-        imageName = "./assets/images/" + imageName;
+        imageName = "./assets/" + imageName;
 
         const newRecipe = await Recipe.create({
             title: req.body.recipeName, 
