@@ -5,7 +5,7 @@ const recipeData = [
     title: 'Pancakes',
     ingredients: '1 cup all-purpose flour, 2 tablespoons sugar, 1 tablespoon baking powder, 1/2 teaspoon salt, 1 cup milk, 1 large egg, 2 tablespoons melted butter, Butter or oil for cooking',
     instructions: 'In a large bowl, whisk together the flour, sugar, baking powder, and salt. In a separate bowl, whisk together the milk, egg, and melted butter. Pour the wet ingredients into the dry ingredients and stir until just combined. Heat a griddle or skillet over medium-high heat and grease with butter or oil. Pour 1/4 cup portions of batter onto the griddle and cook until bubbles form on the surface. Flip and cook until golden brown. Serve with your favorite toppings.',
-    image: 'assets/nikldn-qp7WA8AV2x0-unsplash.jpg',
+    image: '/assets/nikldn-qp7WA8AV2x0-unsplash.jpg',
     user_id: 1,
     tag_ids: [1, 2, 3]
   },
