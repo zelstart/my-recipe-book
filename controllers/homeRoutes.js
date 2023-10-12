@@ -121,6 +121,13 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
+//route for the create recipe page.
+router.get('/newrecipe', async (req, res) => {
+  res.render('newrecipe', {
+    logged_in: true
+  });
+});
+
 router.get('/login', (req, res) => {
     if (req.session.logged_in){
         res.redirect('/profile');
