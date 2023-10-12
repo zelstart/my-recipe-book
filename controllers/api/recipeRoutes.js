@@ -1,6 +1,24 @@
 const router = require('express').Router();
-const { Recipe } = require('../../models');
+const { User, Recipe, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/', async (req, res) => {
+    try {
+        const recipes = await Recipe.findAll({
+            include: [{
+                model: Comment,
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }]
+        });
+        res.json(recipes);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+ });
+
 
 router.post('/', withAuth, async (req, res) => {
     try{
@@ -32,5 +50,6 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 module.exports = router;
