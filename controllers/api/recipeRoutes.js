@@ -1,15 +1,39 @@
 const router = require('express').Router();
+const multer  = require('multer');
 const { Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './assets/images');
+    },
+    filename: function (req, file, cb) {
+        imageName = Date.now() + '-' + file.originalname;
+        cb(null, imageName);
+    }
+});
+  
+const upload = multer({ storage: storage });
+
+var imageName;
+
+router.post('/', upload.single('recipe-image'), async (req, res) => {
     try{
+
+        imageName = "./assets/images/" + imageName;
+
         const newRecipe = await Recipe.create({
-            ...req.body,
+            title: req.body.recipeName, 
+            ingredients: req.body.ingredients,
+            instructions: req.body.instructions,
+            image: imageName, 
             user_id: req.session.user_id,
         });
         res.status(200).json(newRecipe);
     } catch(err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
