@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 router.post('/', withAuth, upload.single('recipe-image'), async (req, res) => {
     try{
 
-        imageName = "./assets/" + imageName;
+        imageName = "/assets/" + imageName;
 
         const newRecipe = await Recipe.create({
             title: req.body.recipeName, 
