@@ -1,59 +1,58 @@
-
-
-    <!-- Your Favorites -->
-    <div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
-        <div class="row justify-content-center">
-            <div class="col-12 mb-2">
-                <h2>Your Favorites</h2>
-            </div>
+<!-- Your Favorites -->
+<div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-2">
+            <h2>Your Favorites</h2>
         </div>
     </div>
+</div>
 
-    <div class="container lg-card-body rounded-bottom p-5 mb-4">
-        <div class="row justify-content-center">
-            {{#each userRecipesHome}} <!-- query to get user's recipes & limit to 6 -->
-                <!-- Dish -->
-                <div class="col-sm-2 col-6 mb-4">
+<div class="container lg-card-body rounded-bottom p-5 mb-4">
+    <div class="row justify-content-center">
+        {{#each userRecipesHome}}
+            <div class="col-sm-12 col-md-6 col-lg-2 mb-4">
+                <a href="/recipes/{{this.id}}">
                     <div class="card position-relative">
-                        <img src="{{this.imageurl}}" alt="{{this.title}}" class="card-img-top">
-                        <div class="position-absolute bottom-box">
-                            recipe author
-                        </div>
-                        <div class="card-body">
+                        <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top custom-image">
+                        {{!-- Commenting out because until we have a favorites system its redundant
+                         <div class="position-absolute bottom-box">
+                            {{user.username}}
+                        </div> --}}
+                        <div class="card-body cstm-card-body">
                             <h5 class="card-title">{{this.title}}</h5>
                         </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-
-    <!-- You might like... -->
-    <div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
-        <div class="row justify-content-center">
-            <div class="col-12 mb-2">
-                <h2>You might like...</h2>
+                </a>
             </div>
+        {{/each}}
+    </div>
+</div>
+
+<!-- You might like... -->
+<div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-2">
+            <h2>You might like...</h2>
         </div>
     </div>
+</div>
 
-    <div class="container lg-card-body rounded-bottom p-5 mb-2">
-        <div class="row justify-content-center">
-            {{#each randomRecipes}} <!-- query to get 6 random recipes excluding the current user -->
-                <!-- Dish -->
-                <div class="col-sm-2 col-6 mb-4">
-                    <div class="card position-relative">
-                        <img src="{{this.imageurl}}" alt="{{this.title}}" class="card-img-top">
+<div class="container lg-card-body rounded-bottom p-5 mb-2">
+    <div class="row justify-content-center">
+        {{#each randomRecipes}}
+            <div class="col-sm-12 col-md-6 col-lg-2 mb-4">
+                <a href="/recipes/{{this.id}}">
+                    <div class="card">
+                        <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top custom-image position-relative">
                         <div class="position-absolute bottom-box">
-                            recipe author
+                            {{user.username}}
                         </div>
-                        <div class="card-body">
+                        <div class="card-body cstm-card-body">
                             <h5 class="card-title">{{this.title}}</h5>
                         </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
+                </a>
+            </div>
+        {{/each}}
     </div>
-
-
+</div>
