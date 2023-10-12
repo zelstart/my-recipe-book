@@ -1,27 +1,73 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
 const withAuth = require('../utils/auth');
+const { sequelize } = require('../config/connection');
 
+// homepage populated with recipe images
 router.get('/', async (req, res) => {
-    try {
-      const recipeData = await Recipe.findAll({
-        include: [
-            {
-                model: User,
-                attributes: ['username'],
-            },
-        ],
-      });
-      
-      const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render('homepage', {
-        recipes,
-        logged_in: req.session.logged_in
-      });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+  try {
+    const recipeData = await Recipe.findAll({
+      include: [{
+        model: User,
+        attributes: ['username'],
+      }],
+    });
+
+    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+
+    const userRecipesHomeData = await Recipe.findAll({
+      where: {
+        // for testing purposes, i had to just set the user_id here since i can't get myself to be logged in
+        user_id: 1,
+        // user_id: req.session.user_id
+      },
+      // can't get the random to work rn
+      // order: [sequelize.random()],
+      limit: 6
+    });
+
+    const userRecipesHome = userRecipesHomeData.map((recipe) => recipe.get({ plain: true }));
+
+    const randomRecipesData = await Recipe.findAll({
+      // order: [sequelize.random()],
+      limit: 6
+    });
+
+    const randomRecipes = randomRecipesData.map((recipe) => recipe.get({ plain: true }));
+
+    res.render('homepage', {
+      recipes,
+      userRecipesHome,
+      randomRecipes,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error(err)
+    res.status(500).json(err);
+  }
 });
+
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const recipeData = await Recipe.findAll({
+//       include: [
+//           {
+//               model: User,
+//               attributes: ['username'],
+//           },
+//       ],
+//     });
+    
+//     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+//     res.render('homepage', {
+//       recipes,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//       res.status(500).json(err);
+//   }
+// });
 
 // router.get('/recipe/:id', async (req,res) => {
 //     try {
