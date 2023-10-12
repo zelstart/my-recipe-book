@@ -45,6 +45,13 @@ h5 {
     color: var(--shadow)
 }
 
+h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--light2);
+    padding-left: 2px;
+    font-size: 1.3rem;
+}
+
 .lg-card-body {
     background: var(--cardbody);
 }
