@@ -63,48 +63,6 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const recipeData = await Recipe.findAll({
-//       include: [
-//           {
-//               model: User,
-//               attributes: ['username'],
-//           },
-//       ],
-//     });
-    
-//     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-//     res.render('homepage', {
-//       recipes,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//       res.status(500).json(err);
-//   }
-// });
-
-// router.get('/recipe/:id', async (req,res) => {
-//     try {
-//       const recipeData = await Recipe.findByPk(req.params.id,{
-//         include: [
-//            {
-//               model: User,
-//               attributes: ['username'],
-//            },
-//           ],
-//        });
-       
-//        const recipe = recipeData.get({ plain: true });
-//        res.render('project', {
-//         ...recipe,
-//         logged_in: req.session.logged_in
-//        });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
 router.get('/profile', withAuth, async (req, res) => {
     try{
         const userData = await User.findByPk(req.session.user_id, {
@@ -176,5 +134,26 @@ router.post('/signup', async (req, res) => {
   });
   
 
+// browse
+router.get('/browse', async (req, res) => {
+  try {
+    const recipes = await Recipe.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    res.render('browse', {
+      logged_in: true,
+      recipes: recipes.map(recipe => recipe.get({ plain: true })),
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An error occurred when fetching recipes');
+  }
+});
 
 module.exports = router;
