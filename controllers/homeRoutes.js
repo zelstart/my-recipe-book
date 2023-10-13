@@ -50,6 +50,7 @@ router.get('/', withAuth, async (req, res) => {
       userRecipesHome,
       randomRecipes,
       logged_in: req.session.logged_in,
+      user_id: req.session.user_id
     });
 
     console.log('recipes:', recipes);
