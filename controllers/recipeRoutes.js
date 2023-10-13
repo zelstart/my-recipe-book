@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
             ingredients: recipe.ingredients,
             instructions: recipe.instructions,
             image: recipe.image,
-            loggedIn: req.session.logged_in, 
+            logged_in: req.session.logged_in, 
             recipeComments: recipe.Comments
         });
     } catch (err) {
