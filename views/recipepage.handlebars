@@ -46,10 +46,10 @@
     <!-- Add Comments-->
     <div class="row justify-content-center mb-4">
         <div class="col-12">
-            <form>
+            <form id="comment-form">
                 <div class="form-group">
                     <label for="comment"><h6>Leave a Comment!</h6></label>
-                    <textarea class="form-control mb-1" id="comment" rows="3"></textarea>
+                    <textarea class="form-control mb-1" id="commentBody" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary cstm-btn">Submit</button>
             </form>
@@ -72,6 +72,3 @@
 </div>
 
 <script src="/js/comment.js"></script>
-<script>
-    console.log('comments (hbs): ',{{recipe.Comments}});
-</script>

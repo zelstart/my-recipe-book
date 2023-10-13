@@ -13,8 +13,6 @@ router.get('/:id', async (req, res) => {
             return res.status(404).json({ message: 'Recipe not found' });
         }
 
-        console.log('user id:', req.session.user_id)
-        console.log(recipe.comments)
         const recipeData = recipe.toJSON();
         recipeData.logged_in = req.session.logged_in;
         recipeData.user_id = req.session.user_id;
@@ -27,6 +25,28 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
+// create comment
+router.post('/:recipeId', async (req, res) => {
+    try {
+        const userId = req.session.user_id; 
+        const recipeId = req.params.recipeId;
+        const body = req.body.body; 
+
+
+        await Comment.create({
+            user_id: userId, 
+            body,
+            recipe_id: recipeId 
+        });
+
+        res.status(200).send('Comment created successfully (route)');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 
 module.exports = router;
