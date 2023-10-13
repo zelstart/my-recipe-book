@@ -7,7 +7,12 @@ class User extends Model {
     newUserData.password = await bcrypt.hash(newUserData.password, 10);
     return newUserData;
   }
+  
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
 }
+
 
 User.init(
   {
