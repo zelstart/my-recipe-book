@@ -47,7 +47,9 @@ router.get('/:id', async (req, res) => {
             username: user.username,
             joinDate: user.createdAt, // should try to swap to the helper eventually
             userRecipes,
-            comments
+            comments,
+            logged_in: req.session.logged_in
+
         });
     } catch (error) {
         console.error(error);
