@@ -93,7 +93,6 @@ a {
 }
 
 
-
 .cstm-btn {
     color:var(--dark) !important; 
     background-color: var(--light2) !important; 
@@ -153,3 +152,14 @@ li {
     color: var(--light2)
 }
 
+#recipe-author,
+#recipe-author a {
+    text-decoration: none !important; 
+    color: white;
+    font-style: italic;
+    
+}
+
+#recipe-author a:hover { 
+    color: var(--light);
+}

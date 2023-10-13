@@ -6,7 +6,7 @@ const { Recipe, User, Comment } = require('../models');
 router.get('/:id', async (req, res) => {
     try {
         const recipe = await Recipe.findByPk(req.params.id, {
-            include: [{ model: Comment, include: User }]
+            include: [{ model: Comment, include: User }, User]
         });
 
         if (!recipe) {

@@ -28,6 +28,9 @@
                     <p id="instructions">
                         {{recipe.instructions}}
                     </p>
+                    <p id="recipe-author">
+                       <span>Created By: <a href="/users/{{recipe.user.id}}">{{recipe.user.username}}</a></span>
+                    </p>
                 </div>
             </div>
         </div>
