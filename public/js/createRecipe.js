@@ -19,8 +19,11 @@ const newRecipeFormHandler = async (event) => {
       body: formData,
     });
 
+    console.log(response.id);
+
     if (response.ok) {
-      document.location.replace('/profile');
+      const data = await response.json();
+      document.location.replace(`recipes/${data.id}`);
     } else {
       alert('Failed to create recipe');
     }
