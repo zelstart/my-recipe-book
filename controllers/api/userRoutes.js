@@ -18,13 +18,11 @@ router.post('/', async (req, res) => {
 
 //log user in, if they exists and entered the correct password.
 router.post('/login', async (req, res) => {
-   console.log("test");
    try{
       //validate user exists.
     const userData = await User.findOne({ where: { username: req.body.username } });
  
     if (!userData) {
-      console.log("name");
     res
        .status(400)
        .json({ message: 'Incorrect username or password, please try again' });
@@ -35,7 +33,6 @@ router.post('/login', async (req, res) => {
      const validPassword = await userData.checkPassword(req.body.password);
  
      if (!validPassword) {
-      console.log("password");
         res
           .status(400)
           .json({ message: 'Incorrect username or password, please try again' });
@@ -50,7 +47,6 @@ router.post('/login', async (req, res) => {
      });
 
    } catch (err) {
-      console.log(err);
      res.status(400).json(err);
    }
 });
