@@ -149,6 +149,7 @@ router.get('/browse', async (req, res) => {
     res.render('browse', {
       logged_in: true,
       recipes: recipes.map(recipe => recipe.get({ plain: true })),
+      user_id: req.session.user_id,
     });
   } catch (error) {
     console.error(error);
