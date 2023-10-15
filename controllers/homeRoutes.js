@@ -146,6 +146,8 @@ router.get('/browse', async (req, res) => {
       ],
     });
 
+    console.log(req.session.user_id)
+
     res.render('browse', {
       logged_in: true,
       recipes: recipes.map(recipe => recipe.get({ plain: true })),

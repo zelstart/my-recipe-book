@@ -1,7 +1,7 @@
 <div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
     <div class="row justify-content-center">
         <div class="col-12 mb-2">
-            <h2 id="recipe-name">{{recipeName}}</h2>
+            <h2 id="recipe-name">{{recipe.title}}</h2>
         </div>
     </div>
 </div>
@@ -13,63 +13,65 @@
                 <div class="position-absolute bottom-box-2">
                     {{recipe.User.username}}
                 </div>
-                <img src="{{image}}" alt="Dish 1" id="image" class="card-img-top rounded-bottom">
+                <img src="{{recipe.image}}" alt="Dish 1" id="image" class="card-img-top rounded-bottom">
             </div>
             <div class="col-sm-9 col-6">
                 <h4>Ingredients:</h4>
                 <ul>
-                    {{#each ingredients}} 
+                    {{#each recipe.ingredients}}
                         <li>{{this}}</li>
                     {{/each}}
                 </ul>
             </div>
             <div class="row justify-content-left">
                 <div class="col-12 mt-4">
-                    <p id="instructions">{{instructions}}</p> 
+                    <p id="instructions">
+                        {{recipe.instructions}}
+                    </p>
+                    <p id="recipe-author">
+                       <span>Created By: <a href="/users/{{recipe.user.id}}">{{recipe.user.username}}</a></span>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-{{#if loggedIn}}
 <div class="container mt-5 p-3 rounded-top cstm-light-text card-border">
     <div class="row justify-content-center">
         <div class="col-12 mb-2">
-            <h2>Comments</h2>
+            <h2 id="comments">Comments</h2>
         </div>
     </div>
 </div>
-    <div class="container lg-card-body rounded-bottom p-5 mb-4">
-        <div class="row justify-content-center mb-4">
-            <div class="col-12">
-                <form>
-                    <div class="form-group">
-                        <label for="comment"><h6>Leave a Comment!</h6></label>
-                        <textarea class="form-control mb-1" id="comment" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary cstm-btn">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-{{/if}}
 
-{{#if recipeComments.length}}
-    <div class="container lg-card-body rounded-bottom p-5 mb-4">
-        <div class="row justify-content-center">
-            {{#each recipeComments}}
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">{{this.User.username}}</div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                {{this.body}}
-                            </p>
-                        </div>
-                    </div>
+<div class="container lg-card-body rounded-bottom p-5 mb-4">
+    <!-- Add Comments-->
+    <div class="row justify-content-center mb-4">
+        <div class="col-12">
+            <form id="comment-form">
+                <div class="form-group">
+                    <label for="comment"><h6>Leave a Comment!</h6></label>
+                    <textarea class="form-control mb-1" id="commentBody" rows="3"></textarea>
                 </div>
-            {{/each}}
+                <button type="submit" class="btn btn-primary cstm-btn">Submit</button>
+            </form>
         </div>
     </div>
-{{/if}}
+
+    <!-- User Comments -->
+    {{#if recipe.comments.length}}
+        {{#each recipe.comments}}
+            <div class="card mb-3">
+                <a href="/users/{{this.user.id}}"><div class="card-header">{{this.user.username}}</div></a>
+                <div class="card-body">
+                    <p class="card-text">{{this.body}}</p>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <h6>No comments yet.</h6>
+    {{/if}}
+</div>
+
+<script src="/js/comment.js"></script>
