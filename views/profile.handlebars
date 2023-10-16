@@ -56,7 +56,7 @@
     <div class="row justify-content-center">
         {{#each comments}}
         <div class="col-12 mb-4">
-            <a href="/recipes/{{this.dataValues.id}}">
+            <a href="/recipes/{{this.dataValues.recipe.dataValues.id}}">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{this.dataValues.recipe.dataValues.title}}</h5>
