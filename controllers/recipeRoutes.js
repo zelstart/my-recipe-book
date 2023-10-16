@@ -20,6 +20,7 @@ router.get('/:id', async (req, res) => {
         res.render('recipepage', {
             recipe: recipeData,
             logged_in: req.session.logged_in,
+            user_id: req.session.user_id
         });
     } catch (err) {
         console.error(err);
