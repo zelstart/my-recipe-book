@@ -83,7 +83,8 @@ router.get('/profile', withAuth, async (req, res) => {
 //route for the create recipe page.
 router.get('/newrecipe', async (req, res) => {
   res.render('newrecipe', {
-    logged_in: true
+    logged_in: true,
+    user_id: req.session.user_id
   });
 });
 
