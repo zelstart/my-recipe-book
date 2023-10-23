@@ -164,7 +164,7 @@ li {
     color: var(--light);
 }
 
-@media (max-width: 666px) {
+@media (max-width: 376px) {
     .navbar-brand h1 {
         font-size: 1.5rem; 
     }
